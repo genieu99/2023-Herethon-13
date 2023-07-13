@@ -46,32 +46,38 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts', 
+    'playlistApp',
+
+    # 카카오 로그인
     'django.contrib.sites',
     'rest_framework',
-    'playlistApp',
-    'django.contrib.sites',
+    
+    # 구글 로그인
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
 ]
 
+# 카카오 로그인
 SOCIAL_OUTH_CONFIG = {
     'KAKAO_REST_API_KEY': secrets['KAKAO_REST_API_KEY'],
     'KAKAO_REDIRECT_URI': secrets['KAKAO_REDIRECT_URI'],
     'KAKAO_SECRET_KEY': secrets['KAKAO_SECRET_KEY'],
 }
-AUTHENTICATION_BACKENDS = [
+
+# 구글 로그인
 SITE_ID = 1
 
-LOGIN_REDIRECT_URL = '/'
-
-]
-    'allauth.account.auth_backends.AuthenticationBackend',
-    # `allauth` specific authentication methods, such as login by e-mail
-
-    'django.contrib.auth.backends.ModelBackend',
+AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+LOGIN_REDIRECT_URL = '/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
