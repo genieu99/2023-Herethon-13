@@ -1,0 +1,120 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+body {
+  /* 버튼 중앙 정렬 */
+
+  height: 100%;
+  padding-bottom: 10%;
+}
+.nav {
+  display: flex;
+  width: 100%;
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+.logo {
+  float: left;
+  margin-left: 3%;
+
+  /* 로고 왼쪽 정렬 */
+  text-align: left;
+}
+
+.logo_img {
+  width: 25%;
+}
+
+.request {
+  display: grid;
+  text-align: center;
+  justify-content: center;
+  color: #d7718a;
+  font-size: 1.75rem;
+  line-height: 2.3rem;
+}
+.request_text {
+  margin-top: 25%;
+}
+.loginpage_img {
+  display: grid;
+  text-align: center;
+  justify-content: center;
+}
+.img {
+  margin-top: 10%;
+}
+.login_img {
+  width: 80%;
+  height: auto;
+}
+.container {
+}
+a {
+  text-decoration-line: none;
+}
+.btns {
+  display: grid;
+  text-align: center;
+  justify-content: center;
+  margin-top: 5%;
+}
+button {
+  border: none;
+  border-radius: 8%;
+  height: 2rem;
+  box-shadow: 0px 0px 5px #ffd9df;
+  display: block;
+  font-weight: bold;
+  width: 20rem;
+  margin-bottom: 5%;
+}
+
+.id-btn {
+  background-color: #faeeef;
+  color: #3f0017;
+  align-items: center;
+}
+.kakao {
+  width: 5%;
+  height: auto;
+}
+.kakao-btn {
+  background-color: #fee500;
+  color: #191919;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+}
+.google {
+  width: 5%;
+  height: auto;
+}
+.google-btn {
+  background-color: #ffffff;
+}
+.login_ask {
+  margin-top: 2%;
+  text-align: center;
+  /* 나란히 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user_ask {
+  font-size: 0.5rem;
+  margin-right: 1%;
+}
+
+.login {
+  font-size: 0.5rem;
+  color: #f78aa4;
+  text-decoration: underline;
+  text-align: right;
+}
+.login1 {
+  color: #f78aa4;
+}

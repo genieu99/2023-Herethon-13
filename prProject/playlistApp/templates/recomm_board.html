@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>request post</title>
+    <link rel="stylesheet" href="{% static 'css/recomm_board.css' %}" />
+
+    <!-- 폰트 적용 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <!-- 상단바 -->
+      <div class="top_bar">
+        <div class="left">
+          <div class="back">
+            <a href="{% url 'playlistApp:recommend_board' %}">
+              <img
+                src="{% static 'img/icon_back.png' %}"
+                class="back_icon"
+                alt="이전 아이콘"
+            /></a>
+          </div>
+          <div class="board">
+            <p class="reque_board">추천 게시판</p>
+          </div>
+        </div>
+        <div class="profile">
+          <a href="https://">
+            <img
+              src="{% static 'img/profile_s.png' %}"
+              class="profile-s"
+              alt="프로필 아이콘"
+          /></a>
+        </div>
+      </div>
+      <!-- 프로필, 수정 바 -->
+      <div class="top2_bar">
+        <div class="profile1">
+          <a href="https://">
+            <img
+              src="{% static 'img/profile_l.png' %}"
+              class="profile-l"
+              alt="프로필 아이콘"
+          /></a>
+          <div class="info">
+            <div class="id">{{ recommend.writer }}</div>
+            <div class="time">{{ recommend.date }}</div>
+          </div>
+        </div>
+        <div class="edits--">
+          <a href="{% url 'playlistApp:update_recommend' recommend.id %}">
+            <img
+              src="{% static 'img/icon_edit.png' %}"
+              class="edit_icon"
+              alt="수정 아이콘"
+          /></a>
+          <a href="{% url 'playlistApp:delete_recommend' recommend.id %}">
+            <img
+              src="{% static 'img/icon_trash.png'%}"
+              class="trash_icon"
+              alt="휴지통 아이콘"
+          /></a>
+          <a href="https://">
+            <img
+              src="{% static 'img/icon_warn.png' %}"
+              class="warn_icon"
+              alt="신고 아이콘"
+          /></a>
+        </div>
+      </div>
+      <!-- 게시글 -->
+      <div class="board1">
+        <!-- 게시글 - 제목 -->
+        <div class="title">
+          <p class="title_text">{{ recommend.title }}</p>
+        </div>
+        <!-- 게시글 - 내용 -->
+        <div class="content">
+          <p class="content_text">{{ recommend.content }}</p>
+        </div>
+        <div class="mark_cur">
+          <div class="bookmark">
+            <img
+              src="{% static 'img/bookmark_default.png'%}"
+              class="bookmark_off"
+              onclick=""
+              alt="북마크"
+            />
+            <p class="mark_text">북마크 {{ recommend.bookmark }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

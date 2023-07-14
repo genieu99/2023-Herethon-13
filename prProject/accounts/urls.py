@@ -8,6 +8,6 @@ urlpatterns = [
     path('signup/', views.signup, name='signup'),
     path('login/', views.login, name='login'),
     path('logout/', views.logout, name='logout'),
-    path('login/kakao', kakao_get_login),
+    path('login/kakao/', kakao_get_login),
     path('login/kakao/user/callback/', get_user_info, name="kakao_callback"),
 ]

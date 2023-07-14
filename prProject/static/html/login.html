@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/login.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&family=Noto+Sans:ital,wght@1,200&display=swap"
+        rel="stylesheet" />
+    <title>로그인</title>
+</head>
+
+<body>
+    <form class="user" method="POST">
+        {% csrf_token %}
+        <div class="nav">
+            <div class="navbtn">
+                <div class="back">
+                    <a href="http://"><i class="fas fa-arrow-left fa-1x" style="color: #3f0017"></i></a>
+                </div>
+                <div class="title">로그인</div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="article_1">
+                <div class="id">
+                    <h3>아이디</h3>
+                </div>
+                <div class="id_box">
+                    <input id="username" name="username" type="text" placeholder="아이디를 입력해주세요" />
+                </div>
+            </div>
+            <div class="article_2">
+                <div class="pw">
+                    <h3>비밀번호</h3>
+                </div>
+                <div class="pw_box">
+                    <input type="password" id="password" placeholder="비밀번호를 입력해주세요" />
+                </div>
+            </div>
+            <div class="article_3">
+                <div class="login_btn">
+                    <a href="http://">
+                        <input type="submit" value="로그인">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="footer">
+        <div class="gotonew">아직 회원이 아니신가요?</div>
+        <div class="linktonew">
+            <a href="">회원가입하기</a>
+        </div>
+    </div>
+</body>
+
+</html>

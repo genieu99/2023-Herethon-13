@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>request-write</title>
+        <link rel="stylesheet" href="../css/request-write.css" />
+
+        <!-- 폰트 적용 -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <div class="container">
+            <!-- 상단바(x -> 끄기, 리퀘버튼) -->
+            <div class="bar">
+                <div class="x-off">
+                    <a href="https://">
+                        <img
+                            src="icon_off1.png"
+                            class="off_icon"
+                            alt="닫기 아이콘"
+                    /></a>
+                </div>
+                <div class="reque-btn">
+                    <a href="https://">
+                        <button class="request-btn">리퀘하기</button></a
+                    >
+                </div>
+            </div>
+            <!-- 제목 입력 -->
+            <div class="title">
+                <textarea
+                    placeholder="리퀘글 제목을 30자 이내로 입력해주세요!"
+                    class="title_cont"
+                ></textarea>
+            </div>
+            <div class="line"></div>
+            <!-- 리퀘 내용 입력 -->
+            <div class="content">
+                <textarea
+                    placeholder="리퀘 내용을 입력해주세요! &#13;&#10;(예: 낮에 뜨는 달 OST로 나올 것 같은 피아노 플리를 찾고 있어요!)"
+                    class="content_cont"
+                ></textarea>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,144 @@
+* {
+  margin: 0;
+  font-family: "Noto Sans KR", sans-serif;
+}
+html {
+  width: 100%;
+  height: 100%;
+}
+body {
+  max-width: 100%;
+}
+.nav {
+  display: flex;
+  width: 100%;
+  padding-top: 5%;
+  margin-bottom: 5%;
+  flex-direction: row;
+  justify-content: space-between;
+  /* 높낮이 맞춰줌 */
+  align-items: center;
+}
+.right {
+  display: flex;
+  margin-right: 3%;
+  align-items: center;
+}
+.title {
+  margin-left: 3%;
+}
+.title_img {
+  width: 25%;
+}
+.navi-btn {
+  display: flex;
+  align-items: center;
+}
+.nav-reque {
+  color: #3f0017;
+  margin-right: 20px;
+  width: 2rem;
+}
+.nav-recom {
+  color: #3f0017;
+  margin-right: 20px;
+  width: 2rem;
+}
+.nav-hot {
+  color: #f78aa4;
+  margin-right: 20px;
+  width: 2rem;
+}
+a {
+  text-decoration-line: none;
+}
+.profile {
+  height: 30px;
+  width: 30px;
+}
+.board {
+  background-color: #fdf1f1;
+  width: 100%;
+  padding-top: 10%;
+  padding-bottom: 5%;
+}
+.post1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 10%;
+  background-color: white;
+  border-radius: 5%;
+}
+.pro {
+  display: flex;
+  margin-left: 5%;
+  margin-top: 5%;
+}
+.id1 {
+  margin-left: 1%;
+  font-size: 0.7rem;
+  width: 7rem;
+}
+.user_id1 {
+  color: #b3a9aa;
+  font-size: 0.5rem;
+}
+.time1 {
+  color: #d7718a;
+  font-size: 0.5rem;
+}
+.title1 {
+  color: #3f0017;
+  margin-left: 6%;
+  margin-right: 6%;
+  margin-top: 6%;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.content {
+  color: #352f30;
+  margin-left: 6%;
+  margin-top: 4%;
+  margin-right: 7%;
+  font-size: 0.7rem;
+}
+.mark_cur {
+  display: flex;
+  margin-top: 3%;
+  justify-content: flex-end;
+  margin-right: 6%;
+}
+.bookmark {
+  display: flex;
+  align-items: center;
+}
+
+.curation {
+  display: flex;
+  align-items: center;
+}
+.bookmark_on {
+  width: 24px;
+  height: auto;
+  padding-top: 0.3rem;
+}
+
+.mark_text {
+  color: #f78aa4;
+  font-size: 0.6rem;
+}
+.curation_icon {
+  width: 24px;
+  height: auto;
+}
+.curation_text {
+  color: #3f0017;
+  font-size: 0.6rem;
+}
+.plylist_img {
+  width: 100%;
+  height: auto;
+}

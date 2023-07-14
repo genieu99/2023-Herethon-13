@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>인기 게시판</title>
+    <link rel="stylesheet" href="{% static 'css/popluar_board.css' %}" />
+    <!-- 폰트적용 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="nav">
+      <div class="title">
+        <img src="{% static 'img/logo_pur.png' %}" class="title_img" alt="로고"/>
+      </div>
+      <div class="right">
+        <div class="navi-btn">
+          <a href="{% url 'playlistApp:request_board' %}"> <div class="nav-reque">리퀘</div></a>
+          <a href="{% url 'playlistApp:recommend_board' %}"><div class="nav-recom">추천</div></a>
+          <a href="{% url 'playlistApp:popular_board' %}"><div class="nav-hot">인기</div></a>
+        </div>
+        <div class="profile">
+          <a href="{% url 'playlistApp:mypage' %}">
+            <img src="{% static 'img/profile_s.png' %}" class="profile" alt="프로필"
+          /></a>
+        </div>
+      </div>
+    </div>
+    <!-- 메인게시판 -->
+    {% for popular in popular_list %}
+    <div class="board">
+      <div class="post1">
+        <div class="pro">
+          <a href="https://">
+            <img src="{% static 'img/profile_s.png' %}" class="profile" alt="프로필"
+          /></a>
+          <div class="id1">
+            <p class="user_id1">akdl0712</p>
+            <p class="time1">1시간 전</p>
+          </div>
+        </div>
+        <div class="title1">
+          <p class="title_text">{{ popular.title }}</p>
+        </div>
+        <div class="content">
+          <p class="title_text">{{ popular.context }}</p>
+        </div>
+        <div class="mark_cur">
+          <div class="bookmark">
+              <img
+                src="{% static 'img/bookmark_click.png' %}"
+                class="bookmark_on"
+                onclick=""
+                alt="북마크 클릭"
+            />
+            <p class="mark_text">북마크 {{ popular.bookmark }}</p>
+          </div>
+          <div class="curation">
+            <img
+              src="{% static 'img/icon_curation.png' %}"
+              class="curation_icon"
+              alt="큐레이션 아이콘"
+            />
+            <p class="curation_text">큐레이션 13</p>
+          </div>
+        </div>
+        <div class="play_img">
+            <a href="https://www.youtube.com/playlist?list=PL9jrCNqoysMo8SqNGcc8oxvMXX1m4dcYf">
+          <img src="{% static 'img/paly.png' %}" class="plylist_img" alt="플리이미지" /></a>
+        </div>
+      </div>
+      {% endfor %}
+      <!-- post2
+      <div class="post1">
+        <div class="pro">
+          <a href="https://">
+            <img src="{% static 'img/profile_s.png' %}" class="profile" alt="프로필"
+          /></a>
+          <div class="id1">
+            <p class="user_id1">akdl0712</p>
+            <p class="time1">1시간 전</p>
+          </div>
+        </div>
+        <div class="title1">
+          <p class="title_text">
+            시험 끝난 날 오후에 듣기 좋은, 햇빛 느낌이 나는, 신나는 Jpop 플리
+            추천           
+          </p>
+        </div>
+        <div class="content">
+          <p class="content_text">
+            Jpop 중에 Souvenir 좋아하시는 분들 있나요? 저는 오후의 햇빛 같아서
+            정말 좋아하는 노래...
+          </p>
+        </div>
+        <div class="mark_cur">
+          <div class="bookmark">
+              <img
+                src="{% static 'img/bookmark_click.png' %}"
+                class="bookmark_on"
+                onclick=""
+                alt="북마크 클릭"
+            />
+            <p class="mark_text">북마크 13</p>
+          </div>
+          <div class="curation">
+            <img
+              src="{% static 'img/icon_curation.png' %}"
+              class="curation_icon"
+              alt="큐레이션 아이콘"
+            />
+            <p class="curation_text">큐레이션 13</p>
+          </div>
+        </div>
+        <div class="play_img">
+            <a href="https://www.youtube.com/">
+          <img src="{% static 'img/paly.png' %}" class="plylist_img" alt="플리이미지" /></a>
+        </div>
+      </div>
+    </div>
+    </div> -->
+  </body>
+</html>

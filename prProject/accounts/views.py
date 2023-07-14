@@ -7,14 +7,27 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
+def home(request) :
+    return render(request, 'main.html')
+
 def signup(request) :
     if request.method == 'POST' :
-        if request.POST['password'] == request.POST['repeat'] :
+        username = request.POST['username']
+        password = password=request.POST['password']
+        # username이 같은게 있으면 bad_join.html
+        if User.objects.filter(username=username).exists():
+            return render(request, 'bad_join.html')
+        user = auth.authenticate(request, username=username, password=password)
+        
+        if (user is None) and (request.POST['password'] == request.POST['repeat']) :
             new_user = User.objects.create_user(username=request.POST['username'], password=request.POST['password'])
             auth.login(request, new_user)
             print("회원가입 성공")
             return redirect('home')
-    return render(request, 'signup.html')
+        else :
+            return render(request, 'bad_join.html')
+    else :
+        return render(request, 'signup.html')
 
 def login(request) :
     if request.method == 'POST' :
@@ -25,7 +38,7 @@ def login(request) :
         if user is not None :
             auth.login(request, user)
             print("로그인 성공")
-            return redirect('home')
+            return redirect('playlistApp:request_board')
         else :
             return render(request, 'bad_login.html')
     else :   

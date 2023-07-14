@@ -1,0 +1,103 @@
+body {
+  background-color: #ffff;
+}
+.request_link {
+  size: 1rem;
+  line-height: 30px;
+}
+.recommend_link {
+  size: 1rem;
+  line-height: 30px;
+}
+
+.hot_link {
+  size: 1em;
+  line-height: 30px;
+}
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 3%;
+  border-bottom: 2px solid #fff8f7;
+  background-color: #ffff;
+}
+.navbtn {
+  display: flex;
+  flex-direction: row;
+  white-space: nowrap;
+  margin-top: 2%;
+  background-color: #ffff;
+  margin-bottom: 3%;
+}
+.title {
+  color: #3f0017;
+  /*추가*/
+  text-align: start;
+  size: 1rem;
+  margin-bottom: 3%;
+}
+/*추가*/
+.more {
+  text-align: start;
+  font-size: 10%;
+}
+a {
+  display: flex;
+  text-decoration-line: none;
+  color: #3f0017;
+  /*추가*/
+  margin-left: 5px;
+}
+.section2 {
+  border: 2px solid #ffff;
+  margin-top: 10%;
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #ffff;
+}
+.user_info {
+  display: flex;
+  flex-direction: row;
+}
+
+.section3 {
+  margin-top: 5%;
+  border: 2px solid #ffff;
+  display: flex;
+  height: 900px;
+  flex-direction: row;
+  background-color: #ffff;
+}
+img {
+  width: 80px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 20%;
+}
+button {
+  background-color: transparent;
+  border: none;
+}
+.user_id {
+  margin-top: 10%;
+  margin-left: 10%;
+}
+.mark_img {
+  margin: 2%;
+}
+.mark {
+  margin: 2%;
+}
+.mark_num {
+  margin: 2%;
+}
