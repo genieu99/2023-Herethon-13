@@ -2,6 +2,9 @@
 
 2023 여기톤 : HERETHON 13조
 
+- **13조 노션 링크**
+https://www.notion.so/genieu/13-2198b066707b4454ab7f108466641f84?pvs=4
+
 <br/>
 
 - **서비스 소개**
