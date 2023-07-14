@@ -8,7 +8,7 @@
 
 <br/>
 
-1. 이름: 플리퀘(Plreque, Playlist Request)
+1. 이름: **플리퀘(Plreque, Playlist Request)**
 2. 서비스 한 줄 소개: 나만을 위한 노동요 리퀘스트! **"대학생을 위한 C2C 플레이리스트 큐레이션 커뮤니티"**
 3. 서비스 특장점
    1) 큐레이션
