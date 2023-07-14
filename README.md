@@ -56,6 +56,6 @@
   <td  align="center"><p>백엔드 전반</p></td>
   <td  align="center"><p>백엔드 전반</p></td>
   <td  align="center"><p>로그인 및 회원가입 페이지</p><p>마이페이지</p><p>리퀘/추천게시판 페이지</p></td> 
-  <td  align="center"><p>인기게시판 페이지</p><p>글 작성 페이지</p><p>담당 기능 C</p></td>
+  <td  align="center"><p>인기게시판 페이지</p><p>글 작성 페이지</p></td>
   </tr>
   </table>
