@@ -1,0 +1,94 @@
+{% load static %} {% load socialaccount %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>main page</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+    <!-- 폰트 적용 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- 상단 로고 -->
+    <div class="nav">
+      <div class="logo">
+        <img
+          src="{% static 'img/logo_pink.png' %}"
+          class="logo_img"
+          alt="로고 이미지"
+        />
+        <!-- <p class="logo_text">PL<br />REQUE</p> -->
+      </div>
+    </div>
+
+    <!-- 텍스트 -->
+    <div class="request">
+      <p class="request_text">
+        플리퀘에서<br />내가 찾던 플레이리스트를<br />의뢰해보세요!
+      </p>
+    </div>
+
+    <!-- 그림 -->
+    <div class="loginpage_img">
+      <div class="img">
+        <img
+          src="{% static 'img/login_img.png' %}"
+          class="login_img"
+          alt="로그인창 이미지"
+        />
+      </div>
+    </div>
+
+    <!-- 로그인 버튼 3개+로그인 -->
+    <div class="container">
+      <div class="btns">
+        <a href="{% url 'accounts:signup' %}">
+          <button class="id-btn">아이디로 회원가입</button>
+        </a>
+        <a href="/accounts/login/kakao/">
+          <button class="kakao-btn">
+            <img
+              src="{% static 'img/kakao_img.png' %}"
+              class="kakao"
+              alt="카카오"
+            />
+            카카오 계정으로 로그인
+          </button></a
+        >
+        <a href="{% provider_login_url 'google' %}">
+          <button class="google-btn">
+            <img
+              src="{% static 'img/google_logo.png' %}"
+              class="google"
+              alt="구글"
+            />
+            Google 계정으로 로그인
+          </button></a
+        >
+      </div>
+      <div class="login_ask">
+        <div class="user_ask">
+          <p class="al_user">이미 회원이신가요?</p>
+        </div>
+        <div class="login">
+          <a href="{% url 'accounts:login' %}">
+            <p class="login1">로그인하기</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

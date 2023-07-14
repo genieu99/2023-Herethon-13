@@ -1,32 +1,106 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/new.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&family=Noto+Sans:ital,wght@1,200&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원가입</title>
-</head>
+  <body>
+    <div class="nav">
+      <div class="navbtn">
+        <div class="back">
+          <a href="{% url 'home' %}"
+            ><i class="fas fa-arrow-left fa-1x" style="color: #3f0017"></i
+          ></a>
+        </div>
+        <div class="title">회원가입</div>
+      </div>
+    </div>
 
-<body>
-    <h1>회원가입</h1>
-    <form method="POST" class="user">
-        {% csrf_token %}
-        <div>
-            <input type="text" name="username" placeholder="Enter Your ID">
+    {% if bad %}
+    <div class="error_message">
+      아이디 조건 또는 입력된 비밀번호가 일치하지 않습니다. 다시 시도해주세요!
+    </div>
+    {% endif %}
+    <form method="POST">
+      {% csrf_token %}
+      <div class="section">
+        <div class="article_1">
+          <div class="id">
+            <h3>아이디 *</h3>
+          </div>
+
+          <input
+            id="id_box"
+            type="text"
+            name="username"
+            placeholder="아이디를 입력해주세요"
+          />
+
+          <div class="id_notice">
+            <div class="id_notice1">* 영문과 숫자만 사용가능해요</div>
+            <div class="id_notice2">* 8자 이하여야 해요</div>
+          </div>
         </div>
-        <div>
-            <div>
-                <input type="password" name="password" placeholder="Password">
-            </div>
-            <div>
-                <input type="password" name="repeat" placeholder="Repeat Password">
-            </div>
+        <div class="article_2">
+          <div class="pw">
+            <h3>비밀번호 *</h3>
+          </div>
+
+          <input
+            id="pw_box"
+            type="password"
+            placeholder="비밀번호를 입력해주세요"
+            name="password"
+          />
         </div>
-        <br>
-        <hr>
-        <input type="submit" value="가입하기">
+        <div class="article_3">
+          <div class="pw">
+            <h3>비밀번호 확인 *</h3>
+          </div>
+
+          <input
+            id="pw_box"
+            type="password"
+            placeholder="비밀번호를 한 번 더 입력해주세요"
+            name="repeat"
+          />
+
+          <div class="pw_notice">* 비밀번호와 일치하는지 확인해주세요</div>
+        </div>
+        <div class="article_4">
+          <input
+            type="image"
+            class="login_btn"
+            id="login_btn_img_"
+            src="{% static 'img/herethon2023_13_signupbtn.png' %}"
+          />
+        </div>
+      </div>
     </form>
-</body>
+    <script>
+      const input_pw = document.getElementById("text1");
+      const input_pw_again = document.getElementById("text2");
+      const error_message = document.getElementById("message");
 
+      if ((text1 = !text2)) {
+        message.style.visibility = "visible";
+      }
+    </script>
+  </body>
 </html>

@@ -1,0 +1,192 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>request post</title>
+    <link rel="stylesheet" href="{% static 'css/reque_post.css' %}" />
+
+    <!-- 폰트 적용 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <!-- 상단바 -->
+      <div class="top_bar">
+        <div class="left">
+          <div class="back">
+            <a href="{% url 'playlistApp:request_board' %}">
+              <img
+                src="{% static 'img/icon_back.png' %}"
+                class="back_icon"
+                alt="이전 아이콘"
+            /></a>
+          </div>
+          <div class="board">
+            <p class="reque_board">리퀘 게시판</p>
+          </div>
+        </div>
+        <div class="profile">
+          <a href="https://">
+            <img
+              src="{% static 'img/profile_s.png' %}"
+              class="profile-s"
+              alt="프로필 아이콘"
+          /></a>
+        </div>
+      </div>
+      <!-- 프로필, 수정 바 -->
+      <div class="top2_bar">
+        <div class="profile1">
+          <a href="https://">
+            <img
+              src="{% static 'img/profile_l.png' %}"
+              class="profile-l"
+              alt="프로필 아이콘"
+          /></a>
+          <div class="info">
+            <div class="id">{{ request_list.writer }}</div>
+            <div class="time">{{ request_list.date }}</div>
+          </div>
+        </div>
+        <div class="edits--">
+          <a href="{% url 'playlistApp:update_request' request_list.id %}">
+            <img
+              src="{% static 'img/icon_edit.png' %}"
+              class="edit_icon"
+              alt="수정 아이콘"
+          /></a>
+          <a href="{% url 'playlistApp:delete_request' request_list.id %}">
+            <img
+              src="{% static 'img/icon_trash.png' %}"
+              class="trash_icon"
+              alt="휴지통 아이콘"
+          /></a>
+          <a href="https://">
+            <img
+              src="{% static 'img/icon_warn.png' %}"
+              class="warn_icon"
+              alt="신고 아이콘"
+          /></a>
+        </div>
+      </div>
+      <!-- 게시글 -->
+      <div class="board1">
+        <!-- 게시글 - 제목 -->
+        <div class="title">
+          <p class="title_text">{{ request_list.title }}</p>
+        </div>
+        <!-- 게시글 - 내용 -->
+        <div class="content">
+          <p class="content_text">{{ request_list.content }}</p>
+        </div>
+        <div class="mark_cur">
+          <div class="bookmark">
+            <img
+              src="{% static 'img/bookmark_default.png' %}"
+              onclick="location.href='{% url 'playlistApp:reque_detail' request_list.id %}'"
+              class="bookmark_off"
+              alt="북마크"
+            />
+            <p class="mark_text">북마크 {{ request_list.bookmark }}</p>
+          </div>
+          <div class="curation">
+            <img
+              src="{% static 'img/icon_curation.png' %}"
+              class="curation_icon"
+              alt="큐레이션 아이콘"
+            />
+            <p class="curation_text">
+              큐레이션 {{ request_list.curation_count }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="line"></div>
+    </div>
+
+    <script>
+      function callViewFunction() {
+        window.location.href = "{% url 'playlistApp:request_board' %}";
+      }
+    </script>
+
+    <div class=""></div>
+
+    <div class="cur_bar">
+      <img
+        src="{% static 'img/icon_curation.png' %}"
+        class="curation_icon2"
+        alt="큐레이션아이콘2"
+      />
+      <p class="cur_num">큐레이션</p>
+      <p class="cnt">{{ request_list.curation_count }}</p>
+    </div>
+    <div class="line1"></div>
+    <!-- 큐레이션 등록창 -->
+    <form
+      method="POST"
+      action="{% url 'playlistApp:create_curation' request_list.id %}"
+    >
+      {% csrf_token %}
+      <div class="comment">
+        <div class="comment_in">
+          <input
+            type="text"
+            class="input_text"
+            placeholder="큐레이션을 링크 형태로 등록해 주세요!"
+            name="cu_content"
+          />
+        </div>
+        <div class="upload">
+          <input type="image" src="{% static 'img/upload.png' %}"></input>
+        </div>
+      </div>
+    </form>
+
+    {% for cu in curation %}
+    <div class="top3_bar">
+      <div class="profile1">
+        <a href="https://">
+          <img
+            src="{% static 'img/profile_l.png' %}"
+            class="profile-l"
+            alt="프로필 아이콘"
+        /></a>
+        <div class="info">
+          <div class="id">{{ cu.writer }}</div>
+          <div class="time">{{ cu.date }}</div>
+        </div>
+      </div>
+      <div class="edits--">
+        <a href="https://"
+          ><img
+            src="{% static 'img/thumb_up.png' %}"
+            class="thumb"
+            alt="좋아요"
+        /></a>
+        <a href="https://">
+          <img
+            src="{% static 'img/icon_warn.png' %}"
+            class="warn_icon"
+            alt="신고 아이콘"
+        /></a>
+      </div>
+    </div>
+    <div class="play_img">
+      <a href="{{ cu.content }}">
+        <img
+          src="{% static 'img/paly.png' %}"
+          class="playlist_img"
+          alt="플리이미지"
+      /></a>
+    </div>
+    {% endfor %}
+  </body>
+</html>

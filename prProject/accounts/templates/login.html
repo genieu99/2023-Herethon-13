@@ -1,31 +1,84 @@
-{% load socialaccount %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&family=Noto+Sans:ital,wght@1,200&display=swap"
+      rel="stylesheet"
+    />
+    <title>로그인</title>
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
-
-<body>
-    <h1>로그인</h1>
+  <body>
     <form class="user" method="POST">
-        {% csrf_token %}
-        <div>
-            <input type="text" id="username" name="username" placeholder="아이디를 입력해주세요.">
+      {% csrf_token %}
+      <div class="nav">
+        <div class="navbtn">
+          <div class="back">
+            <a href="{% url 'home' %}"
+              ><i class="fas fa-arrow-left fa-1x" style="color: #3f0017"></i
+            ></a>
+          </div>
+          <div class="title">로그인</div>
         </div>
-        <div>
-            <input type="password" id="password" name="password" placeholder="비밀번호를 입력해주세요.">
-        </div>
-        <hr>
-        <input type="submit" value="로그인">
+      </div>
+      {% if bad %}
+      <div class="error_message">잘못된 로그인입니다.다시 로그인해주세요.</div>
+      {% endif %}
+      <div class="section">
+        <div class="article_1">
+          <div class="id">
+            <h3>아이디</h3>
+          </div>
 
-        <a href="{% provider_login_url 'google' %}">
-            <i>구글 로그인</i>
-        </a>
+          <input
+            id="id_box"
+            name="username"
+            type="text"
+            placeholder="아이디를 입력해주세요"
+          />
+        </div>
+
+        <div class="article_2">
+          <div class="pw">
+            <h3>비밀번호</h3>
+          </div>
+          <input
+            type="password"
+            name="password"
+            id="pw_box"
+            placeholder="비밀번호를 입력해주세요"
+          />
+        </div>
+        <div class="article_3">
+          <div class="login_btn">
+            <input
+              type="image"
+              src="{% static 'img/herethon2023_13_loginbtn.png' %}"
+              class="login_btn_img"
+              id="login_btn_img_"
+            />
+          </div>
+        </div>
+      </div>
     </form>
-</body>
 
+    <div class="footer">
+      <div class="gotonew">아직 회원이 아니신가요?</div>
+      <div class="linktonew">
+        <a href="{% url 'accounts:signup' %}">회원가입하기</a>
+      </div>
+    </div>
+  </body>
 </html>

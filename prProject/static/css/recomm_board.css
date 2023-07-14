@@ -1,0 +1,121 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Noto Sans KR", sans-serif;
+}
+.top_bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1%;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  /* width: 50%; */
+}
+.back {
+  float: left;
+}
+.back_icon {
+  width: 3rem;
+  height: auto;
+  float: left;
+}
+.board {
+  float: left;
+}
+.reque_board {
+  color: #3f0017;
+}
+.profile {
+  align-items: center;
+}
+.profile-s {
+  width: 2rem;
+  padding-right: 1rem;
+}
+.top2_bar {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 5%;
+  align-items: center;
+}
+.profile1 {
+  display: flex;
+  padding-left: 1.5rem;
+  width: auto;
+}
+.profile-l {
+  width: 3rem;
+}
+.info {
+  font-size: 0.5rem;
+  padding-top: 0.6rem;
+  padding-left: 3%;
+  width: 7rem;
+}
+.id {
+  color: #b3a9aa;
+  width: auto;
+}
+.time {
+  color: #d7718a;
+  width: auto;
+}
+.edits-- {
+  display: flex;
+  padding-right: 5%;
+}
+.edit_icon {
+  width: 2.5rem;
+}
+.trash_icon {
+  width: 2.5rem;
+}
+.warn_icon {
+  width: 2.5rem;
+}
+.board1 {
+  padding-top: 6%;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-bottom: 5%;
+}
+.title {
+}
+.title_text {
+  color: #d7718a;
+  font-size: 7%;
+  /*
+  font-size: 1.2rem;*/
+  font-weight: bold;
+}
+.content {
+  padding-top: 8%;
+}
+.content_text {
+  font-size: 0.8rem;
+  line-height: 1.3rem;
+  padding-right: 4%;
+}
+.mark_cur {
+  display: flex;
+  float: right;
+  padding-top: 5%;
+  padding-right: 7%;
+  color: #3f0017;
+}
+.bookmark {
+  display: flex;
+  align-items: center;
+}
+.bookmark_off {
+  width: 1.5rem;
+  padding-top: 0.4rem;
+}
+.mark_text {
+  font-size: 0.5rem;
+}
