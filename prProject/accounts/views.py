@@ -21,9 +21,9 @@ def signup(request) :
         
         if (user is None) and (request.POST['password'] == request.POST['repeat']) :
             new_user = User.objects.create_user(username=request.POST['username'], password=request.POST['password'])
-            auth.login(request, new_user)
+            auth.login(request, new_user, backend='django.contrib.auth.backends.ModelBackend')
             print("회원가입 성공")
-            return redirect('home')
+            return redirect('playlistApp:request_board')
         else :
             return render(request, 'bad_join.html')
     else :
@@ -36,7 +36,7 @@ def login(request) :
         user = auth.authenticate(request, username=username, password=password)
 
         if user is not None :
-            auth.login(request, user)
+            auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
             print("로그인 성공")
             return redirect('playlistApp:request_board')
         else :

@@ -4,49 +4,6 @@ from .models import Request, Recommend, Curation, MyBookmark, Popular
 
 
 # Create your views here.
-@login_required
-def get_popular(request):
-    request_top10 = Request.objects.all().order_by('bookmark')[:10]
-    recom_top10 = Recommend.objects.all().order_by('bookmark')[:10]
-
-    count = 0
-    i = 0
-    j = 0
-
-    while (count > 8):
-        count += 1
-
-        if request_top10[i].bookmark >= recom_top10[j].bookmark:
-            i += 1
-            Popular.objects.create (
-                title=request_top10[i].objects.get('title'),
-                content=request_top10[i].objects.get('content'),
-                date=request_top10[i].objects.get('date'),
-                writer=request_top10[i].objects.get('writer'),
-                bookmark=request_top10[i].objects.get('bookmark'),
-                ifbookmark=request_top10[i].objects.get('ifbookmark'),
-            )
-        else:
-            j += 1
-            Popular.objects.create (
-                title=recom_top10[j].objects.get('title'),
-                content=recom_top10[j].objects.get('content'),
-                date=recom_top10[j].objects.get('date'),
-                writer=recom_top10[j].objects.get('writer'),
-                bookmark=recom_top10[j].objects.get('bookmark'),
-                ifbookmark=recom_top10[i].objects.get('ifbookmark'),
-            )
-
-        return render(request, 'popular_board.html')
-
-
-def popular_board(request) :
-    
-    popular_list = Popular.objects.all().order_by('bookmark')
-    context = {
-        'popular_list' : popular_list
-    }
-    return render(request, 'popular_board.html', context)     
 
 # 큐레이션 개수 받아오기
 def get_count(reque):
@@ -97,15 +54,18 @@ def reque_post(request):
 @login_required
 def count_bookmark(request, id) :
     request_list = get_object_or_404(Request, pk=id)
-    ifbookmark = Request.objects.get('ifbookmark')
-    bookmark = Request.objects.get('bookmark')
+    ifbookmark = request_list.ifbookmark
+    bookmark = request_list.bookmark
 
-    if ifbookmark == False:
-        bookmark += 1
-        ifbookmark == True
-    else:
-        bookmark -= 1
-        ifbookmark == False
+    bookmark += 1
+
+    # if ifbookmark == False:
+    #     bookmark += 1
+    #     request_list.ifbookmark == True
+
+    # else:
+    #     bookmark -= 1
+    #     request_list.ifbookmark == False
 
     request_list.bookmark = bookmark
     request_list.save()
@@ -114,10 +74,10 @@ def count_bookmark(request, id) :
 def reque_detail(request, id) :
     request_list = get_object_or_404(Request, pk=id)
 
-    # count_bookmark(request, id)
-    # bookmark_count = count_bookmark
-    # request_list.bookmark_count = bookmark_count
-    # request_list.save()
+    count_bookmark(request, id)
+    bookmark_count = request_list.bookmark
+    request_list.bookmark_count = bookmark_count
+    request_list.save()
 
     curation = Curation.objects.filter(request=id).order_by('-id')
     curation_count = get_count(request_list)
@@ -127,7 +87,21 @@ def reque_detail(request, id) :
         'request_list' : request_list,
         'curation' : curation,
     }
+
     return render(request, 'reque_post.html', context) # detail 페이지 
+
+#curation
+@login_required
+def create_curation(request, id) :
+    if request.method == 'POST' :
+        request_list = get_object_or_404(Request, id=id)
+        content = request.POST.get('cu_content') # 링크 받아올 것 
+        Curation.objects.create (
+            content=content,
+            writer=request.user,
+            request=request_list
+        )
+        return redirect('playlistApp:reque_detail', request_list.id)  # request - detail 
 
 
 # update -> request : 사용 안할 수 있음 우선 만듦
@@ -239,18 +213,73 @@ def recom_search(request) :
     else:
         return render(request, 'recommend_searched.html', {})
 
-#curation
 @login_required
-def create_curation(request, id) :
-    if request.method == 'POST' :
-        request_list = get_object_or_404(Request, id=id)
-        content = request.POST.get('cu_content') # 링크 받아올 것 
-        Curation.objects.create (
-            content=content,
-            writer=request.user,
-            request=request_list
-        )
-        return redirect('playlistApp:reque_detail', request_list.id)  # request - detail 
+def popular_board(request):
+    Popular.objects.all().delete()
+
+    request_top10 = Request.objects.all().order_by('-bookmark')[:10]
+    recom_top10 = Recommend.objects.all().order_by('-bookmark')[:10]
+    
+    count = 0
+    for request_item in request_top10:
+        if Popular.objects.filter(title=request_item.title, content=request_item.content).exists():
+            continue
+        Popular.objects.create(
+                title=request_item.title,
+                content=request_item.content,
+                date=request_item.date,
+                writer=request_item.writer,
+                bookmark=request_item.bookmark,
+                ifbookmark=request_item.ifbookmark,
+            )
+        
+        for recommend_item in recom_top10:
+            if count == 9:
+                break
+
+            if Popular.objects.filter(title=recommend_item.title, content=recommend_item.content).exists():
+                continue
+            Popular.objects.create(
+                title=recommend_item.title,
+                content=recommend_item.content,
+                date=recommend_item.date,
+                writer=recommend_item.writer,
+                bookmark=recommend_item.bookmark,
+                ifbookmark=recommend_item.ifbookmark,
+            )
+            
+            if request_item.bookmark > recommend_item.bookmark:
+                Popular.objects.create(
+                    title=request_item.title,
+                    content=request_item.content,
+                    date=request_item.date,
+                    writer=request_item.writer,
+                    bookmark=request_item.bookmark,
+                    ifbookmark=request_item.ifbookmark,
+                )
+                break
+            
+            elif request_item.bookmark < recommend_item.bookmark:
+                Popular.objects.create(
+                    title=recommend_item.title,
+                    content=recommend_item.content,
+                    date=recommend_item.date,
+                    writer=recommend_item.writer,
+                    bookmark=recommend_item.bookmark,
+                    ifbookmark=recommend_item.ifbookmark,
+                )
+                continue
+            
+            count += 1
+
+    popular_list = Popular.objects.all().order_by('bookmark')
+    context = {
+        'popular_list' : popular_list
+    }
+    return render(request, 'popular_board.html', context)
+
+def mypage(request):
+    return render(request, 'mypage.html')
 
 # 마이페이지 
 def get_reque_bookmark(request) :
@@ -287,6 +316,3 @@ def bookmark_board(request) :
         'bookmark_list' : bookmark_list
     }
     return render(request, 'mybookmark.html') # 만들 페이지 
-
-def mypage(request):
-    return render(request, 'mypage.html')

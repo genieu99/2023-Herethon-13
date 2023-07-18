@@ -20,17 +20,14 @@
     </head>
     <body>
         <div class="nav">
-            <div class="title">PL<br />REQUE</div>
+            <div class="title"><a href="{% url 'playlistApp:request_board' %}" id="recommend_btn_"><b>PL<br />REQUE</b></div>
             <div class="navbtn">
                 <div class="request_link">
-                    <!-- 리퀘 페이지 이동-->
                     <a href="{% url 'playlistApp:request_board' %}" id="request_btn_">리퀘</a>
                 </div>
-                <!-- 추천 페이지 이동-->
-                <div class="recommend_link"><a href="{% url 'playlistApp:recommend_board' %}">추천</a></div>
-                <!--마이 페이지 이동-->
-                <div class="mypage_link"><a href="http://">
-                    <i class="fas fa-user fa-2x" style="color: #e4bdc3"></a></i>
+                <div class="recommend_link" ><a href="{% url 'playlistApp:recommend_board' %}" id="recommend_btn_">추천</a></div>
+                <div class="mypage_link"><a href="{% url 'playlistApp:mypage' %}">
+                    <i class="fas fa-user fa-2x" style="color: #e4bdc3"></i></a>
                 </div>
             </div>
         </div>

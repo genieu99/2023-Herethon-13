@@ -19,13 +19,13 @@
     </head>
     <body>
         <div class="nav">
-            <div class="title"><a href="{% url 'playlistApp:request_board' %}" id="request_btn_" style="font-weight:bold;"><b>PL<br />REQUE</b></a></div>
+            <div class="title"><a href="{% url 'playlistApp:request_board' %}" id="recommend_btn_"><b>PL<br />REQUE</b></div>
             <div class="navbtn">
                 <div class="request_link">
                     <a href="{% url 'playlistApp:request_board' %}" id="request_btn_">리퀘</a>
                 </div>
-                <div class="recommend_link" >추천</a></div>
-                <div class="mypage_link"><a href="http://">
+                <div class="recommend_link" ><a href="{% url 'playlistApp:recommend_board' %}" id="recommend_btn_">추천</a></div>
+                <div class="mypage_link"><a href="{% url 'playlistApp:mypage' %}">
                     <i class="fas fa-user fa-2x" style="color: #e4bdc3"></i></a>
                 </div>
             </div>
